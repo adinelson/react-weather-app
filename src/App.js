@@ -1,14 +1,8 @@
 import React from "react";
 
 import Titles from "./components/Titles";
-
 import Form from "./components/Form";
-
 import Weather from "./components/Weather";
-
-
-
-
 
 const API_KEY = "bd7ca9c297cf7cecaf7ada11dbd095e6";
 
@@ -20,7 +14,6 @@ class App extends React.Component {
     humidity: undefined,
     description: undefined,
     error: undefined
-
   }
   getWeather = async (e) => {
     e.preventDefault();
@@ -48,26 +41,34 @@ class App extends React.Component {
       });
     }
   }
-
   render() {
     return (
       <div>
-      <Titles />
-      <Form getWeather={this.getWeather}/>
-      <Weather
-       temperature={this.state.temperature}
-       city={this.state.city}
-       country={this.state.country}
-       description={this.state.description}
-       error={this.state.error}
-
-       />
-
-
-
+        <div className="wrapper">
+          <div className="main">
+            <div className="container">
+              <div className="row">
+                <div className="col-5 title-container">
+                  <Titles />
+                </div>
+                <div className="col-7 form-container">
+                  <Form getWeather={this.getWeather} />
+                  <Weather
+                    temperature={this.state.temperature}
+                    humidity={this.state.humidity}
+                    city={this.state.city}
+                    country={this.state.country}
+                    description={this.state.description}
+                    error={this.state.error}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
-}
+};
 
 export default App;
